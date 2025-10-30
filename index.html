@@ -235,14 +235,84 @@ document.addEventListener('DOMContentLoaded', function(){
       data.seasons.push({ name: legacySeason, frames: defaultFrames });
     }
     const playersToAdd = [
-      {name:"Katt Singh",     team:"SPOT ON SHERIFF",   standard:"B+", season:legacySeason},
-      {name:"Clyde Doyle",    team:"SPOT ON SHERIFF",   standard:"A-", season:legacySeason},
-      {name:"Lacky Singh",    team:"SPOT ON SHERIFF",   standard:"B",  season:legacySeason},
-      {name:"Michael Singh",  team:"SPOT ON SHERIFF",   standard:"B",  season:legacySeason},
-      {name:"Nirm Singh",     team:"SPOT ON SHERIFF",   standard:"B-", season:legacySeason},
-      {name:"Audie Miller",   team:"SPOT ON SHERIFF",   standard:"A-", season:legacySeason},
-      // … (rest of your player list here)
-    ];
+  { name:"Katt Singh",     team:"SPOT ON SHERIFF",   standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Clyde Doyle",    team:"SPOT ON SHERIFF",   standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Lacky Singh",    team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Michael Singh",  team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Nirm Singh",     team:"SPOT ON SHERIFF",   standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Audie Miller",   team:"SPOT ON SHERIFF",   standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Ilias Mou",      team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Jay Smith",      team:"SPOT ON SHERIFF",   standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Tim Chambers",   team:"SPOT ON SHERIFF",   standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Joe Crespo",     team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Joe Reynolds",   team:"SPOT ON SHERIFF",   standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Clint I'Anson",  team:"SPOT ON SHERIFF",   standard:"A+",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Dom Camara",     team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+
+  { name:"Steve Jones",    team:"SPOT ON HUCKNALL",  standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Martin Harper",  team:"SPOT ON HUCKNALL",  standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Gary Newton",    team:"SPOT ON HUCKNALL",  standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Graham Turnbull",team:"SPOT ON HUCKNALL",  standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Tim Hudson",     team:"SPOT ON HUCKNALL",  standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Ian Owen",       team:"SPOT ON HUCKNALL",  standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Mark Snowshall", team:"SPOT ON HUCKNALL",  standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+
+  { name:"Dale Mellor",    team:"THE LIMEKILN",     standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Arron Priest",   team:"THE LIMEKILN",     standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Lee Pickard",    team:"THE LIMEKILN",     standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Lee Howitt",     team:"THE LIMEKILN",     standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Paul Riley",     team:"THE LIMEKILN",     standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"David Casey",    team:"THE LIMEKILN",     standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Jordan Geldard", team:"THE LIMEKILN",     standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Sam Burton",     team:"THE LIMEKILN",     standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Shane Wood",     team:"THE LIMEKILN",     standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Darren Golding", team:"THE LIMEKILN",     standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Pat Kelley",     team:"THE LIMEKILN",     standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Neil Kelly",     team:"THE LIMEKILN",     standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+
+  { name:"Richard Deakin", team:"BESTWOOD ROAD",     standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Allen Shaw",     team:"BESTWOOD ROAD",     standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Dillon Robinson",team:"BESTWOOD ROAD",     standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Gary Stout",     team:"BESTWOOD ROAD",     standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Gary Harvey",    team:"BESTWOOD ROAD",     standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Steve Clark",    team:"BESTWOOD ROAD",     standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Raymond Oldham", team:"BESTWOOD ROAD",     standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Ed Clark",       team:"BESTWOOD ROAD",     standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Aiden Hewes",    team:"BESTWOOD ROAD",     standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+
+  { name:"Ryan Norris",     team:"VICTORY STORMS",   standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Danny Butler",    team:"VICTORY STORMS",   standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"David Oxtoby",    team:"VICTORY STORMS",   standard:"B+",  season:"SUMMER 5  Monday BB Premier 1" },
+  { name:"Andy Wilson",     team:"VICTORY STORMS",   standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Matt Fell",       team:"VICTORY STORMS",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Tim Hurst",       team:"VICTORY STORMS",   standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Tom Laycock",     team:"VICTORY STORMS",   standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Corey Blackshaw", team:"VICTORY STORMS",   standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Martin Elks",     team:"VICTORY STORMS",   standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Tyler Butler",    team:"VICTORY STORMS",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Jimmy Hallam",    team:"VICTORY STORMS",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Greg Davis",      team:"VICTORY STORMS",   standard:"A",   season:"SUMMER 2025 Monday BB Premier 1" },
+
+  { name:"Michael Baguley", team:"WILLOW TREE",      standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Joe Cammack",     team:"WILLOW TREE",      standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Charnce Froome",  team:"WILLOW TREE",      standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Lee Rust",        team:"WILLOW TREE",      standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"William Morgan",  team:"WILLOW TREE",      standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Ben Kosneisky",   team:"WILLOW TREE",      standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Jason Ward",      team:"WILLOW TREE",      standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Loz Sanderson",   team:"WILLOW TREE",      standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+
+  { name:"Rash Jamal",     team:"RILEYS A",         standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Tom Nicholson",  team:"RILEYS A",         standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"James Penn",     team:"RILEYS A",         standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Pat Dolan",       team:"RILEYS A",        standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Mark Abbott",     team:"RILEYS A",        standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Martin Wilson",   team:"RILEYS A",        standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Niall Gordon",    team:"RILEYS A",        standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Dan Bush",        team:"RILEYS A",        standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+  { name:"Dale Soar",       team:"RILEYS A",        standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" }
+];
+
     playersToAdd.forEach(p=>{
       if (!data.players.some(x => x.name===p.name && x.team===p.team && x.standard===p.standard && x.season===p.season)) {
         data.players.push(p);
