@@ -19,10 +19,7 @@
     table { width:100%; border-collapse:collapse; margin-top:10px; }
     table, th, td { border:1px solid #888; }
     th, td { padding:8px; text-align:left; }
-    .modal {
-      display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%;
-      background:rgba(0,0,0,0.5); align-items:center; justify-content:center;
-    }
+    .modal { display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; }
     .modal-content { background:white; padding:20px; border-radius:4px; width:320px; }
   </style>
 </head>
@@ -38,7 +35,6 @@
   <button id="tabStats">Stats</button>
 </nav>
 
-<!-- SEASONS SECTION -->
 <section id="sectionSeasons" class="active">
   <h2>Seasons</h2>
   <form id="formSeason">
@@ -72,7 +68,6 @@
   </table>
 </section>
 
-<!-- PLAYERS SECTION -->
 <section id="sectionPlayers">
   <h2>Players</h2>
   <form id="formPlayer">
@@ -103,7 +98,6 @@
   </table>
 </section>
 
-<!-- TEAMS SECTION -->
 <section id="sectionTeams">
   <h2>Teams</h2>
   <form id="formTeam">
@@ -132,17 +126,6 @@
   </table>
 </section>
 
-<!-- MATCHES & STATS placeholders -->
-<section id="sectionMatches">
-  <h2>Record Match</h2>
-  <p>(Match recording functionality coming soon.)</p>
-</section>
-<section id="sectionStats">
-  <h2>Stats</h2>
-  <p>(Stats dashboard coming soon.)</p>
-</section>
-
-<!-- EDIT MODALS -->
 <div id="editPlayerModal" class="modal">
   <div class="modal-content">
     <h3>Edit Player (Adds new entry)</h3>
@@ -213,31 +196,35 @@
   let data = { seasons: [], players: [], teams: [] };
   const STORAGE_KEY = 'poolTrackerData';
 
-  function saveData(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
-  function loadData() {
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (raw) {
-    try {
-      data = JSON.parse(raw);
-    } catch (e) {
-      data = { seasons: [], players: [], teams: [] };
-    }
+  function saveData(){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    console.log("Data saved", data);
   }
-  // ✅ Ensure all arrays exist even if missing from older save
-  if (!data.seasons) data.seasons = [];
-  if (!data.players) data.players = [];
-  if (!data.teams) data.teams = [];
-}
+  function loadData(){
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw){
+      try {
+        data = JSON.parse(raw);
+      } catch(e){
+        data = { seasons: [], players: [], teams: [] };
+      }
+    }
+    if(!data.seasons) data.seasons = [];
+    if(!data.players) data.players = [];
+    if(!data.teams) data.teams = [];
+    console.log("Data loaded", data);
+  }
 
+  function makeSeasonString(year, type, division){
+    return `${type} ${year} ${division}`;
+  }
 
-  // === Preload Data Block ===
   function preloadData(){
     const legacySeason = makeSeasonString(2025, 'SUMMER', 'Monday BB Premier 1');
-    const defaultFrames  = 15;
+    const defaultFrames = 15;
     if(!data.seasons.some(s => s.name === legacySeason)){
       data.seasons.push({ name: legacySeason, frames: defaultFrames });
     }
-
     const playersToAdd = [
       {name:"Katt Singh",     team:"SPOT ON SHERIFF",   standard:"B+", season:legacySeason},
       {name:"Clyde Doyle",    team:"SPOT ON SHERIFF",   standard:"A-", season:legacySeason},
@@ -261,81 +248,80 @@
       {name:"Ian Owen",       team:"SPOT ON HUCKNALL",  standard:"B",  season:legacySeason},
       {name:"Mark Snowshall", team:"SPOT ON HUCKNALL",  standard:"B",  season:legacySeason},
 
-      {name:"Dale Mellor",     team:"THE LIMEKILN",     standard:"B+", season:legacySeason},
-      {name:"Arron Priest",    team:"THE LIMEKILN",     standard:"A-", season:legacySeason},
-      {name:"Lee Pickard",     team:"THE LIMEKILN",     standard:"B+", season:legacySeason},
-      {name:"Lee Howitt",      team:"THE LIMEKILN",     standard:"A-", season:legacySeason},
-      {name:"Paul Riley",      team:"THE LIMEKILN",     standard:"A-", season:legacySeason},
-      {name:"David Casey",     team:"THE LIMEKILN",     standard:"A-", season:legacySeason},
-      {name:"Jordan Geldard",  team:"THE LIMEKILN",     standard:"B+", season:legacySeason},
-      {name:"Sam Burton",      team:"THE LIMEKILN",     standard:"B+", season:legacySeason},
-      {name:"Shane Wood",      team:"THE LIMEKILN",     standard:"B",  season:legacySeason},
-      {name:"Darren Golding",  team:"THE LIMEKILN",     standard:"B",  season:legacySeason},
-      {name:"Pat Kelley",      team:"THE LIMEKILN",     standard:"B",  season:legacySeason},
-      {name:"Neil Kelly",      team:"THE LIMEKILN",     standard:"B",  season:legacySeason},
+      {name:"Dale Mellor",     team:"THE LIMEKILN",     standard:"B+", season:legacySeason},
+      {name:"Arron Priest",    team:"THE LIMEKILN",     standard:"A-", season:legacySeason},
+      {name:"Lee Pickard",     team:"THE LIMEKILN",     standard:"B+", season:legacySeason},
+      {name:"Lee Howitt",      team:"THE LIMEKILN",     standard:"A-", season:legacySeason},
+      {name:"Paul Riley",      team:"THE LIMEKILN",     standard:"A-", season:legacySeason},
+      {name:"David Casey",     team:"THE LIMEKILN",     standard:"A-", season:legacySeason},
+      {name:"Jordan Geldard",  team:"THE LIMEKILN",     standard:"B+", season:legacySeason},
+      {name:"Sam Burton",      team:"THE LIMEKILN",     standard:"B+", season:legacySeason},
+      {name:"Shane Wood",      team:"THE LIMEKILN",     standard:"B",  season:legacySeason},
+      {name:"Darren Golding",  team:"THE LIMEKILN",     standard:"B",  season:legacySeason},
+      {name:"Pat Kelley",      team:"THE LIMEKILN",     standard:"B",  season:legacySeason},
+      {name:"Neil Kelly",      team:"THE LIMEKILN",     standard:"B",  season:legacySeason},
 
-      {name:"Richard Deakin",  team:"BESTWOOD ROAD",      standard:"B+", season:legacySeason},
-      {name:"Allen Shaw",      team:"BESTWOOD ROAD",      standard:"B",  season:legacySeason},
-      {name:"Dillon Robinson", team:"BESTWOOD ROAD",      standard:"B-", season:legacySeason},
-      {name:"Gary Stout",      team:"BESTWOOD ROAD",      standard:"B-", season:legacySeason},
-      {name:"Gary Harvey",     team:"BESTWOOD ROAD",      standard:"B-", season:legacySeason},
-      {name:"Steve Clark",     team:"BESTWOOD ROAD",      standard:"B-", season:legacySeason},
-      {name:"Raymond Oldham",  team:"BESTWOOD ROAD",      standard:"B-", season:legacySeason},
-      {name:"Ed Clark",        team:"BESTWOOD ROAD",      standard:"B-", season:legacySeason},
-      {name:"Aiden Hewes",     team:"BESTWOOD ROAD",      standard:"B-", season:legacySeason},
+      {name:"Richard Deakin",  team:"BESTWOOD ROAD",      standard:"B+", season:legacySeason},
+      {name:"Allen Shaw",      team:"BESTWOOD ROAD",      standard:"B",  season:legacySeason},
+      {name:"Dillon Robinson", team:"BESTWOOD ROAD",      standard:"B-", season:legacySeason},
+      {name:"Gary Stout",      team:"BESTWOOD ROAD",      standard:"B-", season:legacySeason},
+      {name:"Gary Harvey",     team:"BESTWOOD ROAD",      standard:"B-", season:legacySeason},
+      {name:"Steve Clark",     team:"BESTWOOD ROAD",      standard:"B-", season:legacySeason},
+      {name:"Raymond Oldham",  team:"BESTWOOD ROAD",      standard:"B-", season:legacySeason},
+      {name:"Ed Clark",        team:"BESTWOOD ROAD",      standard:"B-", season:legacySeason},
+      {name:"Aiden Hewes",     team:"BESTWOOD ROAD",      standard:"B-", season:legacySeason},
 
-      {name:"Ryan Norris",     team:"VICTORY STORMS",     standard:"B+", season:legacySeason},
-      {name:"Danny Butler",    team:"VICTORY STORMS",     standard:"B+", season:legacySeason},
-      {name:"David Oxtoby",    team:"VICTORY STORMS",     standard:"B+", season:legacySeason},
-      {name:"Andy Wilson",     team:"VICTORY STORMS",     standard:"A-", season:legacySeason},
-      {name:"Matt Fell",       team:"VICTORY STORMS",     standard:"B",  season:legacySeason},
-      {name:"Tim Hurst",       team:"VICTORY STORMS",     standard:"B+", season:legacySeason},
-      {name:"Tom Laycock",     team:"VICTORY STORMS",     standard:"B+", season:legacySeason},
-      {name:"Corey Blackshaw", team:"VICTORY STORMS",     standard:"B+", season:legacySeason},
-      {name:"Martin Elks",     team:"VICTORY STORMS",     standard:"B+", season:legacySeason},
-      {name:"Tyler Butler",    team:"VICTORY STORMS",     standard:"B",  season:legacySeason},
-      {name:"Jimmy Hallam",    team:"VICTORY STORMS",     standard:"B",  season:legacySeason},
-      {name:"Greg Davis",      team:"VICTORY STORMS",     standard:"A",  season:legacySeason},
+      {name:"Ryan Norris",     team:"VICTORY STORMS",     standard:"B+", season:legacySeason},
+      {name:"Danny Butler",    team:"VICTORY STORMS",     standard:"B+", season:legacySeason},
+      {name:"David Oxtoby",    team:"VICTORY STORMS",     standard:"B+", season:legacySeason},
+      {name:"Andy Wilson",     team:"VICTORY STORMS",     standard:"A-", season:legacySeason},
+      {name:"Matt Fell",       team:"VICTORY STORMS",     standard:"B",  season:legacySeason},
+      {name:"Tim Hurst",       team:"VICTORY STORMS",     standard:"B+", season:legacySeason},
+      {name:"Tom Laycock",     team:"VICTORY STORMS",     standard:"B+", season:legacySeason},
+      {name:"Corey Blackshaw", team:"VICTORY STORMS",     standard:"B+", season:legacySeason},
+      {name:"Martin Elks",     team:"VICTORY STORMS",     standard:"B+", season:legacySeason},
+      {name:"Tyler Butler",    team:"VICTORY STORMS",     standard:"B",  season:legacySeason},
+      {name:"Jimmy Hallam",    team:"VICTORY STORMS",     standard:"B",  season:legacySeason},
+      {name:"Greg Davis",      team:"VICTORY STORMS",     standard:"A",  season:legacySeason},
 
-      {name:"Michael Baguley", team:"WILLOW TREE",        standard:"B-", season:legacySeason},
-      {name:"Joe Cammack",     team:"WILLOW TREE",        standard:"B+", season:legacySeason},
-      {name:"Charnce Froome",  team:"WILLOW TREE",        standard:"B",  season:legacySeason},
-      {name:"Lee Rust",        team:"WILLOW TREE",        standard:"B",  season:legacySeason},
-      {name:"William Morgan",  team:"WILLOW TREE",        standard:"B-", season:legacySeason},
-      {name:"Ben Kosneisky",   team:"WILLOW TREE",        standard:"B-", season:legacySeason},
-      {name:"Jason Ward",      team:"WILLOW TREE",        standard:"B",  season:legacySeason},
-      {name:"Loz Sanderson",   team:"WILLOW TREE",        standard:"B",  season:legacySeason},
+      {name:"Michael Baguley", team:"WILLOW TREE",        standard:"B-", season:legacySeason},
+      {name:"Joe Cammack",     team:"WILLOW TREE",        standard:"B+", season:legacySeason},
+      {name:"Charnce Froome",  team:"WILLOW TREE",        standard:"B",  season:legacySeason},
+      {name:"Lee Rust",        team:"WILLOW TREE",        standard:"B",  season:legacySeason},
+      {name:"William Morgan",  team:"WILLOW TREE",        standard:"B-", season:legacySeason},
+      {name:"Ben Kosneisky",   team:"WILLOW TREE",        standard:"B-", season:legacySeason},
+      {name:"Jason Ward",      team:"WILLOW TREE",        standard:"B",  season:legacySeason},
+      {name:"Loz Sanderson",   team:"WILLOW TREE",        standard:"B",  season:legacySeason},
 
-      {name:"Rash Jamal",     team:"RILEYS A",          standard:"B-", season:legacySeason},
-      {name:"Tom Nicholson",  team:"RILEYS A",          standard:"B-", season:legacySeason},
-      {name:"James Penn",     team:"RILEYS A",          standard:"B-", season:legacySeason},
-      {name:"Pat Dolan",      team:"RILEYS A",          standard:"B",  season:legacySeason},
-      {name:"Mark Abbott",    team:"RILEYS A",          standard:"B-", season:legacySeason},
-      {name:"Martin Wilson",  team:"RILEYS A",          standard:"B",  season:legacySeason},
-      {name:"Niall Gordon",   team:"RILEYS A",          standard:"B-", season:legacySeason},
-      {name:"Dan Bush",       team:"RILEYS A",          standard:"B",  season:legacySeason},
-      {name:"Dale Soar",      team:"RILEYS A",          standard:"B-", season:legacySeason}
+      {name:"Rash Jamal",     team:"RILEYS A",          standard:"B-", season:legacySeason},
+      {name:"Tom Nicholson",  team:"RILEYS A",          standard:"B-", season:legacySeason},
+      {name:"James Penn",     team:"RILEYS A",          standard:"B-", season:legacySeason},
+      {name:"Pat Dolan",      team:"RILEYS A",          standard:"B",  season:legacySeason},
+      {name:"Mark Abbott",    team:"RILEYS A",          standard:"B-", season:legacySeason},
+      {name:"Martin Wilson",  team:"RILEYS A",          standard:"B",  season:legacySeason},
+      {name:"Niall Gordon",   team:"RILEYS A",          standard:"B-", season:legacySeason},
+      {name:"Dan Bush",       team:"RILEYS A",          standard:"B",  season:legacySeason},
+      {name:"Dale Soar",      team:"RILEYS A",          standard:"B-", season:legacySeason}
     ];
     playersToAdd.forEach(p=>{
-      if(!data.players.some(x => x.name===p.name && x.team===p.team && x.standard===p.standard && x.season===p.season)){
+      if(!data.players.some(x=>x.name===p.name && x.team===p.team && x.standard===p.standard && x.season===p.season)){
         data.players.push(p);
       }
     });
   }
 
-  // --- UI & logic for Seasons, Players, Teams ---
-  const formSeasonEl       = document.getElementById('formSeason');
+  // DOM references for UI
+  const formSeasonEl = document.getElementById('formSeason');
   const tableSeasonsBodyEl = document.getElementById('tableSeasons').querySelector('tbody');
-  const formPlayerEl       = document.getElementById('formPlayer');
+  const formPlayerEl   = document.getElementById('formPlayer');
   const selectPlayerSeason = document.getElementById('playerSeason');
-  const tablePlayersBody   = document.getElementById('tablePlayers').querySelector('tbody');
-  const formTeamEl         = document.getElementById('formTeam');
-  const selectTeamSeason   = document.getElementById('teamSeason');
-  const tableTeamsBody     = document.getElementById('tableTeams').querySelector('tbody');
+  const tablePlayersBody = document.getElementById('tablePlayers').querySelector('tbody');
+  const formTeamEl     = document.getElementById('formTeam');
+  const selectTeamSeason= document.getElementById('teamSeason');
+  const tableTeamsBody  = document.getElementById('tableTeams').querySelector('tbody');
 
   let editPlayerIndex = null;
   let editTeamIndex   = null;
-
   const modalPlayerEditEl = document.getElementById('editPlayerModal');
   const modalTeamEditEl   = document.getElementById('editTeamModal');
 
@@ -359,10 +345,9 @@
 
     data.seasons.forEach(s=>{
       const opt1 = document.createElement('option');
-      opt1.value   = s.name; opt1.textContent = s.name;
+      opt1.value = s.name; opt1.textContent = s.name;
       selectPlayerSeason.appendChild(opt1);
       if(editPSeasonEl) editPSeasonEl.appendChild(opt1.cloneNode(true));
-
       const opt2 = opt1.cloneNode(true);
       selectTeamSeason.appendChild(opt2);
       if(editTSeasonEl) editTSeasonEl.appendChild(opt2.cloneNode(true));
@@ -407,15 +392,15 @@
 
   formSeasonEl.addEventListener('submit', e=>{
     e.preventDefault();
-    const year      = document.getElementById('seasonYear').value.trim();
-    const type      = document.getElementById('seasonType').value;
-    const division  = document.getElementById('seasonDivision').value;
-    const frames    = parseInt(document.getElementById('seasonFrames').value,10);
+    const year     = document.getElementById('seasonYear').value.trim();
+    const type     = document.getElementById('seasonType').value;
+    const division = document.getElementById('seasonDivision').value;
+    const frames   = parseInt(document.getElementById('seasonFrames').value,10);
     if(!year || !type || !division || !frames){
       alert("All fields are required."); return;
     }
-    const name = makeSeasonString(year, type, division);
-    data.seasons.push({ name: name, frames: frames });
+    const seasonName = makeSeasonString(year, type, division);
+    data.seasons.push({ name: seasonName, frames: frames });
     saveData();
     refreshSeasonsTable();
     refreshDropdowns();
@@ -484,9 +469,9 @@
     if(!newTeam || !newStandard || !newSeason){
       alert("All fields are required."); return;
     }
-    const orig   = data.players[editPlayerIndex];
-    const entry  = { name:orig.name, team:newTeam, standard:newStandard, season:newSeason };
-    data.players.push(entry);
+    const original = data.players[editPlayerIndex];
+    const newEntry = { name: original.name, team: newTeam, standard: newStandard, season: newSeason };
+    data.players.push(newEntry);
     saveData();
     refreshPlayersTable();
     modalPlayerEditEl.style.display = 'none';
@@ -519,16 +504,15 @@
 
   formTeamEl.addEventListener('submit', e=>{
     e.preventDefault();
-    const teamObj = {
-      season  : document.getElementById('teamSeason').value,
-      name    : document.getElementById('teamName').value.trim(),
-      division: document.getElementById('teamDivision').value,
-      venue   : document.getElementById('teamVenue').value.trim()
-    };
-    if(!teamObj.season || !teamObj.name || !teamObj.division || !teamObj.venue){
+    console.log("Add Team submit captured");  
+    const teamSeason = document.getElementById('teamSeason').value;
+    const teamName   = document.getElementById('teamName').value.trim();
+    const teamDiv    = document.getElementById('teamDivision').value;
+    const teamVenue  = document.getElementById('teamVenue').value.trim();
+    if(!teamSeason || !teamName || !teamDiv || !teamVenue){
       alert("All fields are required."); return;
     }
-    data.teams.push(teamObj);
+    data.teams.push({ season:teamSeason, name:teamName, division:teamDiv, venue:teamVenue });
     saveData();
     refreshTeamsTable();
     formTeamEl.reset();
@@ -557,15 +541,15 @@
     if(!newName || !newDivision || !newVenue || !newSeason){
       alert("All fields are required."); return;
     }
-    const entry = { season:newSeason, name:newName, division:newDivision, venue:newVenue };
-    data.teams.push(entry);
+    const newEntry = { season:newSeason, name:newName, division:newDivision, venue:newVenue };
+    data.teams.push(newEntry);
     saveData();
     refreshTeamsTable();
     modalTeamEditEl.style.display = 'none';
     editTeamIndex = null;
   });
 
-  // Initialize app
+  // Initialize application
   loadData();
   preloadData();
   saveData();
@@ -573,9 +557,9 @@
   refreshDropdowns();
   refreshPlayersTable();
   refreshTeamsTable();
-
 })();
 </script>
 
 </body>
 </html>
+
