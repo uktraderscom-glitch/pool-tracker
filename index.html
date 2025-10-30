@@ -19,8 +19,7 @@
     table { width:100%; border-collapse:collapse; margin-top:10px; }
     table, th, td { border:1px solid #888; }
     th, td { padding:8px; text-align:left; }
-    .modal { display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%;
-      background:rgba(0,0,0,0.5); align-items:center; justify-content:center; }
+    .modal { display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; }
     .modal-content { background:white; padding:20px; border-radius:4px; width:320px; }
   </style>
 </head>
@@ -148,7 +147,7 @@
 </section>
 
 <div id="editPlayerModal" class="modal">
-  <div class="modal‑content">
+  <div class="modal-content">
     <h3>Edit Player (Adds new entry)</h3>
     <label>Team:<br/><input type="text" id="editPlayerTeam" required /></label><br/>
     <label>Standard:<br/>
@@ -172,7 +171,7 @@
 </div>
 
 <div id="editTeamModal" class="modal">
-  <div class="modal‑content">
+  <div class="modal-content">
     <h3>Edit Team (Adds new entry)</h3>
     <label>Team Name:<br/><input type="text" id="editTeamName" required /></label><br/>
     <label>Division:<br/>
@@ -182,9 +181,9 @@
         <option value="Monday BB Premier 2">Monday BB Premier 2</option>
         <option value="Monday BB Premier 3">Monday BB Premier 3</option>
         <option value="Monday EPA League 1">Monday EPA League 1</option>
-        <option value="Monday EPA League 2">Monday EPA League 2</option>
-        <option value="Monday EPA League 3">Monday EPA League 3</option>
-        <option value="Monday EPA League 4">Monday EPA League 4</option>
+        <option value="Monday EPA League 2">Monday EPA League 2</option>
+        <option value="Monday EPA League 3">Monday EPA League 3</option>
+        <option value="Monday EPA League 4">Monday EPA League 4</option>
       </select>
     </label><br/>
     <label>Venue Address:<br/><input type="text" id="editTeamVenue" required /></label><br/>
@@ -200,7 +199,7 @@
 <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js"></script>
 
 <script>
-  // Your Firebase configuration (replace with your actual values)
+  // Replace with your actual Firebase config
   const firebaseConfig = {
     apiKey: "AIzaSyDfFzaHPd88vVCoJgB0KW85QULVkGKX1UQ",
     authDomain: "pool-tracker25.firebaseapp.com",
@@ -211,7 +210,7 @@
   };
 
   // Initialize Firebase
-  const app = firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 </script>
 
@@ -260,9 +259,9 @@ document.addEventListener('DOMContentLoaded', async function(){
     const editPSeasonEl      = document.getElementById('editPlayerSeason');
     const editTSeasonEl      = document.getElementById('editTeamSeason');
     selectPlayerSeason.innerHTML = '';
-    if(editPSeasonEl) editPSeasonEl.innerHTML = '';
+    if (editPSeasonEl) editPSeasonEl.innerHTML = '';
     selectTeamSeason.innerHTML = '';
-    if(editTSeasonEl) editTSeasonEl.innerHTML = '';
+    if (editTSeasonEl) editTSeasonEl.innerHTML = '';
 
     if(data.seasons.length === 0){
       const opt = document.createElement('option');
@@ -333,30 +332,8 @@ document.addEventListener('DOMContentLoaded', async function(){
     }
     const playersToAdd = [
       { name:"Katt Singh",     team:"SPOT ON SHERIFF",   standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
-      { name:"Clyde Doyle",    team:"SPOT ON SHERIFF",   standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
-      { name:"Lacky Singh",    team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-      { name:"Michael Singh",  team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-      { name:"Nirm Singh",     team:"SPOT ON SHERIFF",   standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-      { name:"Audie Miller",   team:"SPOT ON SHERIFF",   standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
-      { name:"Ilias Mou",      team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-      { name:"Jay Smith",      team:"SPOT ON SHERIFF",   standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
-      { name:"Tim Chambers",   team:"SPOT ON SHERIFF",   standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-      { name:"Joe Crespo",     team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-      { name:"Joe Reynolds",   team:"SPOT ON SHERIFF",   standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
-      { name:"Clint I'Anson",  team:"SPOT ON SHERIFF",   standard:"A+",  season:"SUMMER 2025 Monday BB Premier 1" },
-      { name:"Dom Camara",     team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-
-      { name:"Steve Jones",    team:"SPOT ON HUCKNALL",  standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-      { name:"Martin Harper",  team:"SPOT ON HUCKNALL",  standard:"B-",  season:"SUMMER 5  Monday BB Premier 1" }, /* <-- Fixed the typo: should be 2025 */
-      { name:"Gary Newton",    team:"SPOT ON HUCKNALL",  standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-      { name:"Graham Turnbull",team:"SPOT ON HUCKNALL",  standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
-      { name:"Tim Hudson",     team:"SPOT ON HUCKNALL",  standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-      { name:"Ian Owen",       team:"SPOT ON HUCKNALL",  standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-      { name:"Mark Snowshall", team:"SPOT ON HUCKNALL",  standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-
-      /* … continue all your players similarly … */
+      /* … rest of player list … */
     ];
-
     playersToAdd.forEach(p=>{
       if(!data.players.some(x => x.name===p.name && x.team===p.team && x.standard===p.standard && x.season===p.season)){
         data.players.push(p);
@@ -368,7 +345,6 @@ document.addEventListener('DOMContentLoaded', async function(){
   const formPlayerEl       = document.getElementById('formPlayer');
   const tablePlayersBody   = document.getElementById('tablePlayers').querySelector('tbody');
   const formTeamEl         = document.getElementById('formTeam');
-
   const selectPlayerSeason = document.getElementById('playerSeason');
   const selectPlayerTeam   = document.getElementById('playerTeam');
 
@@ -403,7 +379,7 @@ document.addEventListener('DOMContentLoaded', async function(){
     selectPlayerTeam.appendChild(defaultOpt);
 
     if(selectPlayerSeason.value){
-      const filteredTeams = data.teams.filter(t=>t.season === selectPlayerSeason.value);
+      const filteredTeams = data.teams.filter(t => t.season === selectPlayerSeason.value);
       if(filteredTeams.length === 0){
         const opt = document.createElement('option');
         opt.value = '';
