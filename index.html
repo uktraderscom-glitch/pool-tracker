@@ -214,17 +214,21 @@
   const STORAGE_KEY = 'poolTrackerData';
 
   function saveData(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
-  function loadData(){
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if(raw){
-      try { data = JSON.parse(raw); }
-      catch(e){ data = { seasons: [], players: [], teams: [] }; }
+  function loadData() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (raw) {
+    try {
+      data = JSON.parse(raw);
+    } catch (e) {
+      data = { seasons: [], players: [], teams: [] };
     }
   }
+  // ✅ Ensure all arrays exist even if missing from older save
+  if (!data.seasons) data.seasons = [];
+  if (!data.players) data.players = [];
+  if (!data.teams) data.teams = [];
+}
 
-  function makeSeasonString(year, type, division){
-    return `${type} ${year} ${division}`;
-  }
 
   // === Preload Data Block ===
   function preloadData(){
