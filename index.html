@@ -71,25 +71,36 @@
 <section id="sectionPlayers">
   <h2>Players</h2>
   <form id="formPlayer">
-    <label>Full Name:<br/><input type="text" id="playerName" required /></label><br/>
-    <label>Team:<br/><input type="text" id="playerTeam" required /></label><br/>
-    <label>Standard:<br/>
-      <select id="playerStandard" required>
-        <option value="">Select</option>
-        <option value="A+">A+</option>
-        <option value="A">A</option>
-        <option value="A‑">A‑</option>
-        <option value="B+">B+</option>
-        <option value="B">B</option>
-        <option value="B‑">B‑</option>
-        <option value="C+">C+</option>
-        <option value="C">C</option>
-        <option value="C‑">C‑</option>
-      </select>
-    </label><br/>
-    <label>Season:<br/><select id="playerSeason" required></select></label><br/>
-    <button class="btn btn‑primary" type="submit">Add Player</button>
-  </form>
+  <label>Season:<br/>
+    <select id="playerSeason" required>
+      <option value="">Select Season</option>
+    </select>
+  </label><br/>
+  <label>Team:<br/>
+    <select id="playerTeam" required>
+      <option value="">Select Season First</option>
+    </select>
+  </label><br/>
+  <label>Full Name:<br/>
+    <input type="text" id="playerName" required />
+  </label><br/>
+  <label>Standard:<br/>
+    <select id="playerStandard" required>
+      <option value="">Select</option>
+      <option value="A+">A+</option>
+      <option value="A">A</option>
+      <option value="A-">A-</option>
+      <option value="B+">B+</option>
+      <option value="B">B</option>
+      <option value="B-">B-</option>
+      <option value="C+">C+</option>
+      <option value="C">C</option>
+      <option value="C-">C-</option>
+    </select>
+  </label><br/>
+  <button class="btn btn-primary" type="submit">Add Player</button>
+</form>
+
 
   <h3>All Players</h3>
   <table id="tablePlayers">
@@ -324,6 +335,34 @@ document.addEventListener('DOMContentLoaded', function(){
   const tableSeasonsBodyEl  = document.getElementById('tableSeasons').querySelector('tbody');
   const formPlayerEl        = document.getElementById('formPlayer');
   const selectPlayerSeason  = document.getElementById('playerSeason');
+  const selectPlayerTeam    = document.getElementById('playerTeam');
+
+// When season changes, populate team list dynamically
+selectPlayerSeason.addEventListener('change', () => {
+  const selSeason = selectPlayerSeason.value;
+  selectPlayerTeam.innerHTML = '';
+  const defaultOption = document.createElement('option');
+  defaultOption.value = '';
+  defaultOption.textContent = selSeason ? 'Select Team' : 'Select Season First';
+  selectPlayerTeam.appendChild(defaultOption);
+
+  if (selSeason) {
+    const filteredTeams = data.teams.filter(t => t.season === selSeason);
+    if (filteredTeams.length === 0) {
+      const opt = document.createElement('option');
+      opt.value = '';
+      opt.textContent = 'No teams for this season';
+      selectPlayerTeam.appendChild(opt);
+    } else {
+      filteredTeams.forEach(team => {
+        const opt = document.createElement('option');
+        opt.value = team.name;
+        opt.textContent = team.name;
+        selectPlayerTeam.appendChild(opt);
+      });
+    }
+  }
+});
   const tablePlayersBody    = document.getElementById('tablePlayers').querySelector('tbody');
   const formTeamEl          = document.getElementById('formTeam');
   const selectTeamSeason    = document.getElementById('teamSeason');
@@ -448,7 +487,7 @@ document.addEventListener('DOMContentLoaded', function(){
     e.preventDefault();
     const player = {
       name    : document.getElementById('playerName').value.trim(),
-      team    : document.getElementById('playerTeam').value.trim(),
+      team    : selectPlayerTeam.value,
       standard: document.getElementById('playerStandard').value,
       season  : document.getElementById('playerSeason').value
     };
@@ -460,6 +499,7 @@ document.addEventListener('DOMContentLoaded', function(){
     saveData();
     refreshPlayersTable();
     formPlayerEl.reset();
+    selectPlayerTeam.innerHTML = '<option value="">Select Season First</option>';
   });
 
   function openPlayerEdit(idx){
