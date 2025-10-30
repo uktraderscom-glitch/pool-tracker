@@ -183,6 +183,28 @@
     <button id="btnCancelTeamEdit" class="btn btn‑danger">Cancel</button>
   </div>
 </div>
+<script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js"></script>
+  <!-- Firebase App (Core SDK) -->
+<script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js"></script>
+
+<!-- Firebase Firestore -->
+<script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js"></script>
+
+<script>
+  // 🔥 Your Firebase configuration (replace with your real values)
+  const firebaseConfig = {
+    apiKey: "AIzaSyDfFzaHPd88vVCoJgB0KW85QULVkGKX1UQ",
+    authDomain: "pool-tracker25.firebaseapp.com",
+    projectId: "pool-tracker25",
+    storageBucket: "pool-tracker25.firebasestorage.app",
+    messagingSenderId: "704360073759",
+    appId: "1:704360073759:web:2bf22300ea9b7f1a31e32a"
+  };
+
+  // Initialize Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function(){
@@ -568,9 +590,14 @@ selectPlayerSeason.addEventListener('change', () => {
       alert("All fields are required.");
       return;
     }
-    data.teams.push({ season: teamSeason, name: teamName, division: teamDiv, venue: teamVenue });
-    saveData();
-    refreshTeamsTable();
+    await db.collection("teams").add({
+  season: teamSeason,
+  name: teamName,
+  division: teamDiv,
+  venue: teamVenue
+});
+refreshTeamsTable();
+
     formTeamEl.reset();
   });
 
@@ -609,6 +636,13 @@ selectPlayerSeason.addEventListener('change', () => {
   // initialize
   loadData();
   preloadData();
+  async function loadTeamsFromDB() {
+  const snapshot = await db.collection("teams").get();
+  data.teams = snapshot.docs.map(doc => doc.data());
+  refreshTeamsTable();
+}
+await loadTeamsFromDB();
+
   saveData();
   refreshSeasonsTable();
   refreshDropdowns();
