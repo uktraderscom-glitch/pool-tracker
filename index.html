@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Pool League Tracker — Spot On Sheriff</title>
   <style>
-    body { font‑family: Arial, sans‑serif; margin:0; padding:0; }
+    body { font-family: Arial, sans‑serif; margin:0; padding:0; }
     header { background:#333; color:white; padding:10px; }
     nav { display:flex; background:#444; }
     nav button { flex:1; padding:10px; border:none; background:#444; color:white; cursor:pointer; }
@@ -13,14 +13,15 @@
     section.active { display:block; }
     input[type=text], input[type=number], select { padding:5px; margin:5px 0; width:200px; }
     .btn { padding:6px 12px; margin:5px; cursor:pointer; }
-    .btn‑primary { background:#28a745; color:white; border:none; }
-    .btn‑danger { background:#dc3545; color:white; border:none; }
-    .btn‑edit { background:#007bff; color:white; border:none; }
-    table { width:100%; border‑collapse:collapse; margin‑top:10px; }
+    .btn-primary { background:#28a745; color:white; border:none; }
+    .btn-danger { background:#dc3545; color:white; border:none; }
+    .btn-edit { background:#007bff; color:white; border:none; }
+    table { width:100%; border-collapse:collapse; margin-top:10px; }
     table, th, td { border:1px solid #888; }
-    th, td { padding:8px; text‑align:left; }
-    .modal { display:none; position:fixed; z‑index:999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.5); align‑items:center; justify‑content:center; }
-    .modal‑content { background:white; padding:20px; border‑radius:4px; width:320px; }
+    th, td { padding:8px; text-align:left; }
+    .modal { display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%;
+      background:rgba(0,0,0,0.5); align-items:center; justify-content:center; }
+    .modal-content { background:white; padding:20px; border-radius:4px; width:320px; }
   </style>
 </head>
 <body>
@@ -59,7 +60,7 @@
       </select>
     </label><br/>
     <label>Frames per Match:<br/><input type="number" id="seasonFrames" min="1" required /></label><br/>
-    <button class="btn btn‑primary" type="submit">Add Season</button>
+    <button class="btn btn-primary" type="submit">Add Season</button>
   </form>
   <h3>Existing Seasons</h3>
   <table id="tableSeasons">
@@ -71,36 +72,35 @@
 <section id="sectionPlayers">
   <h2>Players</h2>
   <form id="formPlayer">
-  <label>Season:<br/>
-    <select id="playerSeason" required>
-      <option value="">Select Season</option>
-    </select>
-  </label><br/>
-  <label>Team:<br/>
-    <select id="playerTeam" required>
-      <option value="">Select Season First</option>
-    </select>
-  </label><br/>
-  <label>Full Name:<br/>
-    <input type="text" id="playerName" required />
-  </label><br/>
-  <label>Standard:<br/>
-    <select id="playerStandard" required>
-      <option value="">Select</option>
-      <option value="A+">A+</option>
-      <option value="A">A</option>
-      <option value="A-">A-</option>
-      <option value="B+">B+</option>
-      <option value="B">B</option>
-      <option value="B-">B-</option>
-      <option value="C+">C+</option>
-      <option value="C">C</option>
-      <option value="C-">C-</option>
-    </select>
-  </label><br/>
-  <button class="btn btn-primary" type="submit">Add Player</button>
-</form>
-
+    <label>Season:<br/>
+      <select id="playerSeason" required>
+        <option value="">Select Season</option>
+      </select>
+    </label><br/>
+    <label>Team:<br/>
+      <select id="playerTeam" required>
+        <option value="">Select Season First</option>
+      </select>
+    </label><br/>
+    <label>Full Name:<br/>
+      <input type="text" id="playerName" required />
+    </label><br/>
+    <label>Standard:<br/>
+      <select id="playerStandard" required>
+        <option value="">Select</option>
+        <option value="A+">A+</option>
+        <option value="A">A</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B">B</option>
+        <option value="B-">B-</option>
+        <option value="C+">C+</option>
+        <option value="C">C</option>
+        <option value="C-">C-</option>
+      </select>
+    </label><br/>
+    <button class="btn btn-primary" type="submit">Add Player</button>
+  </form>
 
   <h3>All Players</h3>
   <table id="tablePlayers">
@@ -127,7 +127,7 @@
       </select>
     </label><br/>
     <label>Venue Address:<br/><input type="text" id="teamVenue" required /></label><br/>
-    <button class="btn btn‑primary" type="submit">Add Team</button>
+    <button class="btn btn-primary" type="submit">Add Team</button>
   </form>
 
   <h3>All Teams</h3>
@@ -135,6 +135,16 @@
     <thead><tr><th>Season</th><th>Name</th><th>Division</th><th>Venue</th><th>Actions</th></tr></thead>
     <tbody></tbody>
   </table>
+</section>
+
+<section id="sectionMatches">
+  <h2>Record Match</h2>
+  <p>Coming soon.</p>
+</section>
+
+<section id="sectionStats">
+  <h2>Stats</h2>
+  <p>Coming soon.</p>
 </section>
 
 <div id="editPlayerModal" class="modal">
@@ -156,8 +166,8 @@
       </select>
     </label><br/>
     <label>Season:<br/><select id="editPlayerSeason" required></select></label><br/>
-    <button id="btnSavePlayerEdit" class="btn btn‑primary">Save</button>
-    <button id="btnCancelPlayerEdit" class="btn btn‑danger">Cancel</button>
+    <button id="btnSavePlayerEdit" class="btn btn-primary">Save</button>
+    <button id="btnCancelPlayerEdit" class="btn btn-danger">Cancel</button>
   </div>
 </div>
 
@@ -179,24 +189,23 @@
     </label><br/>
     <label>Venue Address:<br/><input type="text" id="editTeamVenue" required /></label><br/>
     <label>Season:<br/><select id="editTeamSeason" required></select></label><br/>
-    <button id="btnSaveTeamEdit" class="btn btn‑primary">Save</button>
-    <button id="btnCancelTeamEdit" class="btn btn‑danger">Cancel</button>
+    <button id="btnSaveTeamEdit" class="btn btn-primary">Save</button>
+    <button id="btnCancelTeamEdit" class="btn btn-danger">Cancel</button>
   </div>
 </div>
-<script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js"></script>
-  <!-- Firebase App (Core SDK) -->
-<script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js"></script>
 
-<!-- Firebase Firestore -->
+<!-- Firebase scripts -->
+<script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js"></script>
 
 <script>
-  // 🔥 Your Firebase configuration (replace with your real values)
+  // Your Firebase configuration (replace with your actual values)
   const firebaseConfig = {
     apiKey: "AIzaSyDfFzaHPd88vVCoJgB0KW85QULVkGKX1UQ",
     authDomain: "pool-tracker25.firebaseapp.com",
     projectId: "pool-tracker25",
-    storageBucket: "pool-tracker25.firebasestorage.app",
+    storageBucket: "pool-tracker25.appspot.com",
     messagingSenderId: "704360073759",
     appId: "1:704360073759:web:2bf22300ea9b7f1a31e32a"
   };
@@ -207,7 +216,7 @@
 </script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', async function(){
   const tabs = {
     tabSeasons: 'sectionSeasons',
     tabPlayers: 'sectionPlayers',
@@ -235,178 +244,29 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   let data = { seasons: [], players: [], teams: [] };
-  const STORAGE_KEY = 'poolTrackerData';
 
-  function saveData(){
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    console.log('Data saved', data);
-  }
-
-  function loadData(){
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if(raw){
-      try {
-        data = JSON.parse(raw);
-      } catch(e){
-        data = { seasons: [], players: [], teams: [] };
-      }
-    }
-    if(!data.seasons) data.seasons = [];
-    if(!data.players) data.players = [];
-    if(!data.teams) data.teams = [];
-    console.log('Data loaded', data);
-  }
-
-  function makeSeasonString(year, type, division){
-    return `${type} ${year} ${division}`;
-  }
-
-  function preloadData(){
-    const legacySeason = makeSeasonString(2025, 'SUMMER', 'Monday BB Premier 1');
-    const defaultFrames = 15;
-    if(!data.seasons.some(s => s.name === legacySeason)){
-      data.seasons.push({ name: legacySeason, frames: defaultFrames });
-    }
-    const playersToAdd = [
-  { name:"Katt Singh",     team:"SPOT ON SHERIFF",   standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Clyde Doyle",    team:"SPOT ON SHERIFF",   standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Lacky Singh",    team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Michael Singh",  team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Nirm Singh",     team:"SPOT ON SHERIFF",   standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Audie Miller",   team:"SPOT ON SHERIFF",   standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Ilias Mou",      team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Jay Smith",      team:"SPOT ON SHERIFF",   standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Tim Chambers",   team:"SPOT ON SHERIFF",   standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Joe Crespo",     team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Joe Reynolds",   team:"SPOT ON SHERIFF",   standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Clint I'Anson",  team:"SPOT ON SHERIFF",   standard:"A+",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Dom Camara",     team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-
-  { name:"Steve Jones",    team:"SPOT ON HUCKNALL",  standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Martin Harper",  team:"SPOT ON HUCKNALL",  standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Gary Newton",    team:"SPOT ON HUCKNALL",  standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Graham Turnbull",team:"SPOT ON HUCKNALL",  standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Tim Hudson",     team:"SPOT ON HUCKNALL",  standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Ian Owen",       team:"SPOT ON HUCKNALL",  standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Mark Snowshall", team:"SPOT ON HUCKNALL",  standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-
-  { name:"Dale Mellor",    team:"THE LIMEKILN",     standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Arron Priest",   team:"THE LIMEKILN",     standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Lee Pickard",    team:"THE LIMEKILN",     standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Lee Howitt",     team:"THE LIMEKILN",     standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Paul Riley",     team:"THE LIMEKILN",     standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"David Casey",    team:"THE LIMEKILN",     standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Jordan Geldard", team:"THE LIMEKILN",     standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Sam Burton",     team:"THE LIMEKILN",     standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Shane Wood",     team:"THE LIMEKILN",     standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Darren Golding", team:"THE LIMEKILN",     standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Pat Kelley",     team:"THE LIMEKILN",     standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Neil Kelly",     team:"THE LIMEKILN",     standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-
-  { name:"Richard Deakin", team:"BESTWOOD ROAD",     standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Allen Shaw",     team:"BESTWOOD ROAD",     standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Dillon Robinson",team:"BESTWOOD ROAD",     standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Gary Stout",     team:"BESTWOOD ROAD",     standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Gary Harvey",    team:"BESTWOOD ROAD",     standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Steve Clark",    team:"BESTWOOD ROAD",     standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Raymond Oldham", team:"BESTWOOD ROAD",     standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Ed Clark",       team:"BESTWOOD ROAD",     standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Aiden Hewes",    team:"BESTWOOD ROAD",     standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-
-  { name:"Ryan Norris",     team:"VICTORY STORMS",   standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Danny Butler",    team:"VICTORY STORMS",   standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"David Oxtoby",    team:"VICTORY STORMS",   standard:"B+",  season:"SUMMER 5  Monday BB Premier 1" },
-  { name:"Andy Wilson",     team:"VICTORY STORMS",   standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Matt Fell",       team:"VICTORY STORMS",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Tim Hurst",       team:"VICTORY STORMS",   standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Tom Laycock",     team:"VICTORY STORMS",   standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Corey Blackshaw", team:"VICTORY STORMS",   standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Martin Elks",     team:"VICTORY STORMS",   standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Tyler Butler",    team:"VICTORY STORMS",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Jimmy Hallam",    team:"VICTORY STORMS",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Greg Davis",      team:"VICTORY STORMS",   standard:"A",   season:"SUMMER 2025 Monday BB Premier 1" },
-
-  { name:"Michael Baguley", team:"WILLOW TREE",      standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Joe Cammack",     team:"WILLOW TREE",      standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Charnce Froome",  team:"WILLOW TREE",      standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Lee Rust",        team:"WILLOW TREE",      standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"William Morgan",  team:"WILLOW TREE",      standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Ben Kosneisky",   team:"WILLOW TREE",      standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Jason Ward",      team:"WILLOW TREE",      standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Loz Sanderson",   team:"WILLOW TREE",      standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-
-  { name:"Rash Jamal",     team:"RILEYS A",         standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Tom Nicholson",  team:"RILEYS A",         standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"James Penn",     team:"RILEYS A",         standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Pat Dolan",       team:"RILEYS A",        standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Mark Abbott",     team:"RILEYS A",        standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Martin Wilson",   team:"RILEYS A",        standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Niall Gordon",    team:"RILEYS A",        standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Dan Bush",        team:"RILEYS A",        standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
-  { name:"Dale Soar",       team:"RILEYS A",        standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" }
-];
-
-    playersToAdd.forEach(p=>{
-      if (!data.players.some(x => x.name===p.name && x.team===p.team && x.standard===p.standard && x.season===p.season)) {
-        data.players.push(p);
-      }
-    });
-  }
-
-  const formSeasonEl        = document.getElementById('formSeason');
-  const tableSeasonsBodyEl  = document.getElementById('tableSeasons').querySelector('tbody');
-  const formPlayerEl        = document.getElementById('formPlayer');
-  const selectPlayerSeason  = document.getElementById('playerSeason');
-  const selectPlayerTeam    = document.getElementById('playerTeam');
-
-// When season changes, populate team list dynamically
-selectPlayerSeason.addEventListener('change', () => {
-  const selSeason = selectPlayerSeason.value;
-  selectPlayerTeam.innerHTML = '';
-  const defaultOption = document.createElement('option');
-  defaultOption.value = '';
-  defaultOption.textContent = selSeason ? 'Select Team' : 'Select Season First';
-  selectPlayerTeam.appendChild(defaultOption);
-
-  if (selSeason) {
-    const filteredTeams = data.teams.filter(t => t.season === selSeason);
-    if (filteredTeams.length === 0) {
-      const opt = document.createElement('option');
-      opt.value = '';
-      opt.textContent = 'No teams for this season';
-      selectPlayerTeam.appendChild(opt);
-    } else {
-      filteredTeams.forEach(team => {
-        const opt = document.createElement('option');
-        opt.value = team.name;
-        opt.textContent = team.name;
-        selectPlayerTeam.appendChild(opt);
-      });
+  async function loadTeamsFromDB(){
+    try {
+      const snapshot = await db.collection("teams").get();
+      data.teams = snapshot.docs.map(doc => doc.data());
+    } catch (err) {
+      console.error("Error loading teams from Firestore:", err);
     }
   }
-});
-  const tablePlayersBody    = document.getElementById('tablePlayers').querySelector('tbody');
-  const formTeamEl          = document.getElementById('formTeam');
-  const selectTeamSeason    = document.getElementById('teamSeason');
-  const tableTeamsBody      = document.getElementById('tableTeams').querySelector('tbody');
-
-  let editPlayerIndex = null;
-  let editTeamIndex   = null;
-
-  const modalPlayerEditEl = document.getElementById('editPlayerModal');
-  const modalTeamEditEl   = document.getElementById('editTeamModal');
 
   function refreshDropdowns(){
+    const selectPlayerSeason = document.getElementById('playerSeason');
+    const selectTeamSeason   = document.getElementById('teamSeason');
+    const editPSeasonEl      = document.getElementById('editPlayerSeason');
+    const editTSeasonEl      = document.getElementById('editTeamSeason');
     selectPlayerSeason.innerHTML = '';
-    const editPSeasonEl = document.getElementById('editPlayerSeason');
     if(editPSeasonEl) editPSeasonEl.innerHTML = '';
     selectTeamSeason.innerHTML = '';
-    const editTSeasonEl = document.getElementById('editTeamSeason');
     if(editTSeasonEl) editTSeasonEl.innerHTML = '';
 
     if(data.seasons.length === 0){
-      const opt  = document.createElement('option');
-      opt.value  = '';
+      const opt = document.createElement('option');
+      opt.value = '';
       opt.textContent = 'No seasons available';
       selectPlayerSeason.appendChild(opt);
       if(editPSeasonEl) editPSeasonEl.appendChild(opt.cloneNode(true));
@@ -414,7 +274,6 @@ selectPlayerSeason.addEventListener('change', () => {
       if(editTSeasonEl) editTSeasonEl.appendChild(opt.cloneNode(true));
       return;
     }
-
     data.seasons.forEach(s=>{
       const opt1 = document.createElement('option');
       opt1.value   = s.name;
@@ -428,12 +287,13 @@ selectPlayerSeason.addEventListener('change', () => {
   }
 
   function refreshSeasonsTable(){
+    const tableSeasonsBodyEl = document.getElementById('tableSeasons').querySelector('tbody');
     tableSeasonsBodyEl.innerHTML = '';
     data.seasons.forEach((s, idx)=>{
       const tr = document.createElement('tr');
       tr.innerHTML = `<td>${s.name}</td><td>${s.frames}</td><td>
-        <button class="btn btn‑edit" data-index="${idx}" data-action="edit">Edit</button>
-        <button class="btn btn‑danger" data-index="${idx}">Delete</button>
+        <button class="btn btn-edit" data-index="${idx}" data-action="edit">Edit</button>
+        <button class="btn btn-danger" data-index="${idx}">Delete</button>
       </td>`;
       tableSeasonsBodyEl.appendChild(tr);
     });
@@ -447,7 +307,6 @@ selectPlayerSeason.addEventListener('change', () => {
           if(newName && newFrames){
             s.name   = newName;
             s.frames = parseInt(newFrames,10) || s.frames;
-            saveData();
             refreshSeasonsTable();
             refreshDropdowns();
           }
@@ -455,13 +314,129 @@ selectPlayerSeason.addEventListener('change', () => {
       } else {
         btn.addEventListener('click', ()=>{
           data.seasons.splice(idx,1);
-          saveData();
           refreshSeasonsTable();
           refreshDropdowns();
         });
       }
     });
   }
+
+  function makeSeasonString(year, type, division){
+    return `${type} ${year} ${division}`;
+  }
+
+  async function preloadData(){
+    const legacySeason = makeSeasonString(2025, 'SUMMER', 'Monday BB Premier 1');
+    const defaultFrames = 15;
+    if(!data.seasons.some(s => s.name === legacySeason)){
+      data.seasons.push({ name: legacySeason, frames: defaultFrames });
+    }
+    const playersToAdd = [
+      { name:"Katt Singh",     team:"SPOT ON SHERIFF",   standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
+      { name:"Clyde Doyle",    team:"SPOT ON SHERIFF",   standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
+      { name:"Lacky Singh",    team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+      { name:"Michael Singh",  team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+      { name:"Nirm Singh",     team:"SPOT ON SHERIFF",   standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+      { name:"Audie Miller",   team:"SPOT ON SHERIFF",   standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
+      { name:"Ilias Mou",      team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+      { name:"Jay Smith",      team:"SPOT ON SHERIFF",   standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
+      { name:"Tim Chambers",   team:"SPOT ON SHERIFF",   standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+      { name:"Joe Crespo",     team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+      { name:"Joe Reynolds",   team:"SPOT ON SHERIFF",   standard:"A-",  season:"SUMMER 2025 Monday BB Premier 1" },
+      { name:"Clint I'Anson",  team:"SPOT ON SHERIFF",   standard:"A+",  season:"SUMMER 2025 Monday BB Premier 1" },
+      { name:"Dom Camara",     team:"SPOT ON SHERIFF",   standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+
+      { name:"Steve Jones",    team:"SPOT ON HUCKNALL",  standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+      { name:"Martin Harper",  team:"SPOT ON HUCKNALL",  standard:"B-",  season:"SUMMER 5  Monday BB Premier 1" }, /* <-- Fixed the typo: should be 2025 */
+      { name:"Gary Newton",    team:"SPOT ON HUCKNALL",  standard:"B-",  season:"SUMMER 2025 Monday BB Premier 1" },
+      { name:"Graham Turnbull",team:"SPOT ON HUCKNALL",  standard:"B+",  season:"SUMMER 2025 Monday BB Premier 1" },
+      { name:"Tim Hudson",     team:"SPOT ON HUCKNALL",  standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+      { name:"Ian Owen",       team:"SPOT ON HUCKNALL",  standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+      { name:"Mark Snowshall", team:"SPOT ON HUCKNALL",  standard:"B",   season:"SUMMER 2025 Monday BB Premier 1" },
+
+      /* … continue all your players similarly … */
+    ];
+
+    playersToAdd.forEach(p=>{
+      if(!data.players.some(x => x.name===p.name && x.team===p.team && x.standard===p.standard && x.season===p.season)){
+        data.players.push(p);
+      }
+    });
+  }
+
+  const formSeasonEl       = document.getElementById('formSeason');
+  const formPlayerEl       = document.getElementById('formPlayer');
+  const tablePlayersBody   = document.getElementById('tablePlayers').querySelector('tbody');
+  const formTeamEl         = document.getElementById('formTeam');
+
+  const selectPlayerSeason = document.getElementById('playerSeason');
+  const selectPlayerTeam   = document.getElementById('playerTeam');
+
+  function refreshPlayersTable(){
+    tablePlayersBody.innerHTML = '';
+    data.players.forEach((p, idx)=>{
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${p.name}</td><td>${p.team}</td><td>${p.standard}</td><td>${p.season}</td><td>
+        <button class="btn btn-edit" data-index="${idx}">Edit</button>
+        <button class="btn btn-danger" data-index="${idx}" data-delete="true">Delete</button>
+      </td>`;
+      tablePlayersBody.appendChild(tr);
+    });
+    tablePlayersBody.querySelectorAll('button').forEach(btn=>{
+      const idx = parseInt(btn.getAttribute('data-index'),10);
+      if(btn.getAttribute('data-delete')){
+        btn.addEventListener('click', ()=>{
+          data.players.splice(idx,1);
+          refreshPlayersTable();
+        });
+      } else {
+        btn.addEventListener('click', ()=> openPlayerEdit(idx));
+      }
+    });
+  }
+
+  selectPlayerSeason.addEventListener('change', ()=>{
+    selectPlayerTeam.innerHTML = '';
+    const defaultOpt = document.createElement('option');
+    defaultOpt.value = '';
+    defaultOpt.textContent = selectPlayerSeason.value ? 'Select Team' : 'Select Season First';
+    selectPlayerTeam.appendChild(defaultOpt);
+
+    if(selectPlayerSeason.value){
+      const filteredTeams = data.teams.filter(t=>t.season === selectPlayerSeason.value);
+      if(filteredTeams.length === 0){
+        const opt = document.createElement('option');
+        opt.value = '';
+        opt.textContent = 'No teams for this season';
+        selectPlayerTeam.appendChild(opt);
+      } else {
+        filteredTeams.forEach(team=>{
+          const opt = document.createElement('option');
+          opt.value = team.name;
+          opt.textContent = team.name;
+          selectPlayerTeam.appendChild(opt);
+        });
+      }
+    }
+  });
+
+  formPlayerEl.addEventListener('submit', e=>{
+    e.preventDefault();
+    const player = {
+      name    : document.getElementById('playerName').value.trim(),
+      team    : selectPlayerTeam.value,
+      standard: document.getElementById('playerStandard').value,
+      season  : selectPlayerSeason.value
+    };
+    if(!player.name || !player.team || !player.standard || !player.season){
+      alert("All fields are required.");
+      return;
+    }
+    data.players.push(player);
+    refreshPlayersTable();
+    formPlayerEl.reset();
+    selectPlayerTeam.innerHTML = '<option value="">Select Season First</option>';
+  });
 
   formSeasonEl.addEventListener('submit', e=>{
     e.preventDefault();
@@ -474,114 +449,14 @@ selectPlayerSeason.addEventListener('change', () => {
       return;
     }
     const seasonName = makeSeasonString(year, type, division);
-    data.seasons.push({ name: seasonName, frames: frames });
-    saveData();
+    data.seasons.push({ name:seasonName, frames:frames });
     refreshSeasonsTable();
     refreshDropdowns();
     formSeasonEl.reset();
   });
 
-  function refreshPlayersTable(){
-    tablePlayersBody.innerHTML = '';
-    data.players.forEach((p, idx)=>{
-      const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${p.name}</td><td>${p.team}</td><td>${p.standard}</td><td>${p.season}</td><td>
-        <button class="btn btn‑edit" data-index="${idx}">Edit</button>
-        <button class="btn btn‑danger" data-index="${idx}" data-delete="true">Delete</button>
-      </td>`;
-      tablePlayersBody.appendChild(tr);
-    });
-    tablePlayersBody.querySelectorAll('button').forEach(btn=>{
-      const idx = parseInt(btn.getAttribute('data-index'),10);
-      if(btn.getAttribute('data-delete')){
-        btn.addEventListener('click', ()=>{
-          data.players.splice(idx,1);
-          saveData();
-          refreshPlayersTable();
-        });
-      } else {
-        btn.addEventListener('click', ()=> openPlayerEdit(idx));
-      }
-    });
-  }
-
-  formPlayerEl.addEventListener('submit', e=>{
+  formTeamEl.addEventListener('submit', async e=>{
     e.preventDefault();
-    const player = {
-      name    : document.getElementById('playerName').value.trim(),
-      team    : selectPlayerTeam.value,
-      standard: document.getElementById('playerStandard').value,
-      season  : document.getElementById('playerSeason').value
-    };
-    if(!player.name || !player.team || !player.standard || !player.season){
-      alert("All fields are required.");
-      return;
-    }
-    data.players.push(player);
-    saveData();
-    refreshPlayersTable();
-    formPlayerEl.reset();
-    selectPlayerTeam.innerHTML = '<option value="">Select Season First</option>';
-  });
-
-  function openPlayerEdit(idx){
-    editPlayerIndex = idx;
-    const p = data.players[idx];
-    document.getElementById('editPlayerTeam').value     = p.team;
-    document.getElementById('editPlayerStandard').value = p.standard;
-    document.getElementById('editPlayerSeason').value   = p.season;
-    modalPlayerEditEl.style.display = 'flex';
-  }
-
-  document.getElementById('btnCancelPlayerEdit').addEventListener('click', ()=>{
-    modalPlayerEditEl.style.display = 'none';
-    editPlayerIndex = null;
-  });
-
-  document.getElementById('btnSavePlayerEdit').addEventListener('click', ()=>{
-    const newTeam     = document.getElementById('editPlayerTeam').value.trim();
-    const newStandard = document.getElementById('editPlayerStandard').value;
-    const newSeason   = document.getElementById('editPlayerSeason').value;
-    if(!newTeam || !newStandard || !newSeason){
-      alert("All fields are required.");
-      return;
-    }
-    const original = data.players[editPlayerIndex];
-    const newEntry = { name: original.name, team: newTeam, standard: newStandard, season: newSeason };
-    data.players.push(newEntry);
-    saveData();
-    refreshPlayersTable();
-    modalPlayerEditEl.style.display = 'none';
-    editPlayerIndex = null;
-  });
-
-  function refreshTeamsTable(){
-    tableTeamsBody.innerHTML = '';
-    data.teams.forEach((t, idx)=>{
-      const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${t.season}</td><td>${t.name}</td><td>${t.division}</td><td>${t.venue}</td><td>
-        <button class="btn btn‑edit" data-index="${idx}">Edit</button>
-        <button class="btn btn‑danger" data-index="${idx}" data-delete="true">Delete</button>
-      </td>`;
-      tableTeamsBody.appendChild(tr);
-    });
-    tableTeamsBody.querySelectorAll('button').forEach(btn=>{
-      const idx = parseInt(btn.getAttribute('data-index'),10);
-      if(btn.getAttribute('data-delete')){
-        btn.addEventListener('click', ()=>{
-          data.teams.splice(idx,1);
-          saveData();
-          refreshTeamsTable();
-        });
-      } else {
-        btn.addEventListener('click', ()=> openTeamEdit(idx));
-      }
-    });
-  }
-
-  formTeamEl.addEventListener('submit', e=>{
-    e.preventDefault();
-    console.log('Add Team submit captured');
     const teamSeason = document.getElementById('teamSeason').value;
     const teamName   = document.getElementById('teamName').value.trim();
     const teamDiv    = document.getElementById('teamDivision').value;
@@ -590,64 +465,52 @@ selectPlayerSeason.addEventListener('change', () => {
       alert("All fields are required.");
       return;
     }
-    await db.collection("teams").add({
-  season: teamSeason,
-  name: teamName,
-  division: teamDiv,
-  venue: teamVenue
-});
-refreshTeamsTable();
-
-    formTeamEl.reset();
+    try {
+      await db.collection("teams").add({
+        season:  teamSeason,
+        name:    teamName,
+        division:teamDiv,
+        venue:   teamVenue
+      });
+      data.teams.push({ season:teamSeason, name:teamName, division:teamDiv, venue:teamVenue });
+      refreshTeamsTable();
+      formTeamEl.reset();
+    } catch(err) {
+      console.error("Error adding team to Firestore:", err);
+    }
   });
 
-  function openTeamEdit(idx){
-    editTeamIndex = idx;
-    const t = data.teams[idx];
-    document.getElementById('editTeamName').value     = t.name;
-    document.getElementById('editTeamDivision').value = t.division;
-    document.getElementById('editTeamVenue').value    = t.venue;
-    document.getElementById('editTeamSeason').value   = t.season;
-    modalTeamEditEl.style.display = 'flex';
+  function refreshTeamsTable(){
+    const tableTeamsBody = document.getElementById('tableTeams').querySelector('tbody');
+    tableTeamsBody.innerHTML = '';
+    data.teams.forEach((t, idx)=>{
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${t.season}</td><td>${t.name}</td><td>${t.division}</td><td>${t.venue}</td><td>
+        <button class="btn btn-edit" data-index="${idx}">Edit</button>
+        <button class="btn btn-danger" data-index="${idx}" data-delete="true">Delete</button>
+      </td>`;
+      tableTeamsBody.appendChild(tr);
+    });
+    tableTeamsBody.querySelectorAll('button').forEach(btn=>{
+      const idx = parseInt(btn.getAttribute('data-index'),10);
+      if(btn.getAttribute('data-delete')){
+        btn.addEventListener('click', ()=>{
+          data.teams.splice(idx,1);
+          refreshTeamsTable();
+        });
+      } else {
+        btn.addEventListener('click', ()=> openTeamEdit(idx));
+      }
+    });
   }
 
-  document.getElementById('btnCancelTeamEdit').addEventListener('click', ()=>{
-    modalTeamEditEl.style.display = 'none';
-    editTeamIndex = null;
-  });
-
-  document.getElementById('btnSaveTeamEdit').addEventListener('click', ()=>{
-    const newName     = document.getElementById('editTeamName').value.trim();
-    const newDivision = document.getElementById('editTeamDivision').value;
-    const newVenue    = document.getElementById('editTeamVenue').value.trim();
-    const newSeason   = document.getElementById('editTeamSeason').value;
-    if(!newName || !newDivision || !newVenue || !newSeason){
-      alert("All fields are required.");
-      return;
-    }
-    const newEntry = { season: newSeason, name: newName, division: newDivision, venue: newVenue };
-    data.teams.push(newEntry);
-    saveData();
-    refreshTeamsTable();
-    modalTeamEditEl.style.display = 'none';
-    editTeamIndex = null;
-  });
-
-  // initialize
-  loadData();
-  preloadData();
-  async function loadTeamsFromDB() {
-  const snapshot = await db.collection("teams").get();
-  data.teams = snapshot.docs.map(doc => doc.data());
-  refreshTeamsTable();
-}
-await loadTeamsFromDB();
-
-  saveData();
+  await loadTeamsFromDB();
+  await preloadData();
   refreshSeasonsTable();
   refreshDropdowns();
   refreshPlayersTable();
   refreshTeamsTable();
+
 });
 </script>
 
